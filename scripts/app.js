@@ -946,7 +946,7 @@ const filteredDataSource = [
 ];
 
 Cesium.GeoJsonDataSource
-  .load("../data/json/geojsons/POIs.geojson", {
+  .load("../data/json/geoJsons/POIs.geojson", {
     clampToGround: true
   })
   .then(function(ds) {
