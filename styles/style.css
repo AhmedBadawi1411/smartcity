@@ -443,7 +443,7 @@ hr{
     opacity: 1;
     visibility: visible;
     transition: all 0.3s ease-in-out;
-
+    z-index: 1001;
 }
 
 .story-data{
