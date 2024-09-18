@@ -38,4 +38,9 @@ const dayTime = document.getElementsByTagName('tspan')[1];
 const daySpeed = document.getElementsByTagName('tspan')[2];
 const day = document.getElementsByTagName('g');
 
-console.log(day.length);
+const seachIcon = document.createElement('i');
+seachIcon.className = 'fa-solid fa-magnifying-glass-location'
+const topRightToolbar = document.getElementsByClassName('right')[0];
+const searchContainer = document.getElementsByClassName('cesium-viewer-geocoderContainer')[0];
+document.getElementsByClassName('cesium-geocoder-searchButton')[0].appendChild(seachIcon);
+topRightToolbar.appendChild(searchContainer);

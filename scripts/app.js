@@ -152,7 +152,7 @@ function map_initialization() {
     selectionIndicator: true,
     animation: true,
     baseLayerPicker: true,
-    geocoder: false,
+    geocoder: true,
     navigationHelpButton: false,
     timeline: false,
     homeButton: false,
@@ -300,82 +300,82 @@ function drawPolyline(entity, entityPositions, speedf = 1000) {
 //! ********************************************************** !//
 //! ********************************************************** !//
 
-var airEntitiesVisible = true;
-airqualityBtn.addEventListener("click", () => {
-  airEntitiesVisible = !airEntitiesVisible;
-  if (airEntitiesVisible) {
-    viewer.entities.removeById("AQI");
-    viewer.entities.removeById("CO");
-    viewer.entities.removeById("NO2");
-    viewer.entities.removeById("O3");
-    viewer.entities.removeById("SO2");
-    airInfo.classList.remove('visible');
-    airqualityBtn.classList.remove('activeBtn');
-  } else {
-    airInfo.classList.add('visible');
-    airqualityBtn.classList.add('activeBtn');
-    airQualityFun();
-  }
-});
+// var airEntitiesVisible = true;
+// airqualityBtn.addEventListener("click", () => {
+//   airEntitiesVisible = !airEntitiesVisible;
+//   if (airEntitiesVisible) {
+//     viewer.entities.removeById("AQI");
+//     viewer.entities.removeById("CO");
+//     viewer.entities.removeById("NO2");
+//     viewer.entities.removeById("O3");
+//     viewer.entities.removeById("SO2");
+//     airInfo.classList.remove('visible');
+//     airqualityBtn.classList.remove('activeBtn');
+//   } else {
+//     airInfo.classList.add('visible');
+//     airqualityBtn.classList.add('activeBtn');
+//     airQualityFun();
+//   }
+// });
 
-const airQuality = JSON.parse(localStorage.getItem("airData"));
-var airData = airQuality.data[0];
+// const airQuality = JSON.parse(localStorage.getItem("airData"));
+// var airData = airQuality.data[0];
 
-aqiVal.textContent = `${airData["aqi"]}`
-coVal.textContent = `${airData["co"]} µg/m³`
-no2Val.textContent = `${airData["no2"]} µg/m³`
-so2Val.textContent = `${airData["so2"]} µg/m³`
-o3Val.textContent = `${airData["o3"]} µg/m³`
+// aqiVal.textContent = `${airData["aqi"]}`
+// coVal.textContent = `${airData["co"]} µg/m³`
+// no2Val.textContent = `${airData["no2"]} µg/m³`
+// so2Val.textContent = `${airData["so2"]} µg/m³`
+// o3Val.textContent = `${airData["o3"]} µg/m³`
 
-function airQualityFun() {
-  const airQuality = JSON.parse(localStorage.getItem("airData"));
-  var airData = airQuality.data[0];
-  const AQI = viewer.entities.add({
-    id: "AQI",
-    position: Cesium.Cartesian3.fromDegrees(lon+0.05, lat-0.01),
-    box: {
-      dimensions: new Cesium.Cartesian3(200, 200, airData["aqi"] * 40),
-      material: Cesium.Color.fromCssColorString('#0077BE'),
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
-    }
-  });
-  const CO = viewer.entities.add({
-    id: "CO",
-    position: Cesium.Cartesian3.fromDegrees(lon+0.04, lat+0.02),
-    box: {
-      dimensions: new Cesium.Cartesian3(200, 200, airData["co"] * 40),
-      material: Cesium.Color.fromCssColorString('#E7494A'),
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
-    }
-  });
-  const NO2 = viewer.entities.add({
-    id: "NO2",
-    position: Cesium.Cartesian3.fromDegrees(lon-0.02, lat-0.01),
-    box: {
-      dimensions: new Cesium.Cartesian3(200, 200, airData["no2"] * 40),
-      material: Cesium.Color.fromCssColorString('#5C8984'),
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
-    }
-  });
-  const O3 = viewer.entities.add({
-    id: "O3",
-    position: Cesium.Cartesian3.fromDegrees(lon-0.02, lat+0.01),
-    box: {
-      dimensions: new Cesium.Cartesian3(200, 200, airData["o3"] * 40),
-      material: Cesium.Color.fromCssColorString('#962DA8'),
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
-    }
-  });
-  const SO2 = viewer.entities.add({
-    id: "SO2",
-    position: Cesium.Cartesian3.fromDegrees(lon+0.02, lat-0.04),
-    box: {
-      dimensions: new Cesium.Cartesian3(200, 200, airData["so2"] * 50),
-      material: Cesium.Color.fromCssColorString('#ffa722'),
-      heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
-    }
-  });
-}
+// function airQualityFun() {
+//   const airQuality = JSON.parse(localStorage.getItem("airData"));
+//   var airData = airQuality.data[0];
+//   const AQI = viewer.entities.add({
+//     id: "AQI",
+//     position: Cesium.Cartesian3.fromDegrees(lon+0.05, lat-0.01),
+//     box: {
+//       dimensions: new Cesium.Cartesian3(200, 200, airData["aqi"] * 40),
+//       material: Cesium.Color.fromCssColorString('#0077BE'),
+//       heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+//     }
+//   });
+//   const CO = viewer.entities.add({
+//     id: "CO",
+//     position: Cesium.Cartesian3.fromDegrees(lon+0.04, lat+0.02),
+//     box: {
+//       dimensions: new Cesium.Cartesian3(200, 200, airData["co"] * 40),
+//       material: Cesium.Color.fromCssColorString('#E7494A'),
+//       heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+//     }
+//   });
+//   const NO2 = viewer.entities.add({
+//     id: "NO2",
+//     position: Cesium.Cartesian3.fromDegrees(lon-0.02, lat-0.01),
+//     box: {
+//       dimensions: new Cesium.Cartesian3(200, 200, airData["no2"] * 40),
+//       material: Cesium.Color.fromCssColorString('#5C8984'),
+//       heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+//     }
+//   });
+//   const O3 = viewer.entities.add({
+//     id: "O3",
+//     position: Cesium.Cartesian3.fromDegrees(lon-0.02, lat+0.01),
+//     box: {
+//       dimensions: new Cesium.Cartesian3(200, 200, airData["o3"] * 40),
+//       material: Cesium.Color.fromCssColorString('#962DA8'),
+//       heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+//     }
+//   });
+//   const SO2 = viewer.entities.add({
+//     id: "SO2",
+//     position: Cesium.Cartesian3.fromDegrees(lon+0.02, lat-0.04),
+//     box: {
+//       dimensions: new Cesium.Cartesian3(200, 200, airData["so2"] * 50),
+//       material: Cesium.Color.fromCssColorString('#ffa722'),
+//       heightReference: Cesium.HeightReference.CLAMP_TO_GROUND
+//     }
+//   });
+// }
 
 //! ********************************************************** !//
 //! ********************************************************** !//
