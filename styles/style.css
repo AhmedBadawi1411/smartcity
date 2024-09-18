@@ -649,7 +649,7 @@ i{
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    visibility: none;
+    visibility: hidden;
     color: var(--dark-font-color);
     opacity: 0;
     transition: all 0.3s  ease-in-out;
@@ -700,7 +700,6 @@ i{
     padding: 12px 8px;
     color: black;
     gap: 8px;
-
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
